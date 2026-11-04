@@ -8,7 +8,7 @@ Select an architecture with available pretrained weights and document your archi
 
 The helpers provide data loading and metrics. Complete the three TODOs: adapt the binary model, train one epoch, and return prediction scores. Choose and explain learning rates, augmentation and training budget. Defaults are starting points; develop using validation data and reserve testing for final evaluation.
 
-You may explore different models. Explain your selection and report relevant trials. Be ready for a short code walkthrough of about five minutes and a small live modification: predict its effect before making the change, then explain the result. Follow the final brief's AI-use policy; the teaching team will confirm the oral format and marking.
+You may explore different models. Explain your selection and report relevant trials. Follow the final brief's AI-use and acknowledgement rules.
 
 ## Setup
 

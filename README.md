@@ -1,28 +1,32 @@
-# BreastMNIST 预训练实验代码模板
+# BreastMNIST Transfer Learning Starter
 
-这是一套用于机器学习教学的代码框架草案，帮助学生完成医学图像分类与迁移学习实验。它提供起始流程，保留核心实现和实验判断给学生；具体任务、评分与允许的 AI 辅助，以最终 assignment brief 为准。
+A draft teaching scaffold for medical image classification and transfer learning. The notebook provides a starting workflow while leaving core implementation and experimental decisions to students. Follow the final assignment brief for tasks, assessment and permitted AI assistance.
 
-**数据固定，模型与权重由学生选择。**数据为 BreastMNIST 的 28×28 乳腺超声灰度图，任务是恶性与正常／良性的二分类。保留官方训练、验证、测试划分；原标签 0 为恶性，1 为正常／良性。数据与预训练权重在运行时从相应来源获得，不随仓库分发。
+**The dataset is fixed; the model and weights are your choice.** BreastMNIST contains 28×28 grayscale breast ultrasound images for binary classification. Keep the official training, validation and test splits: label 0 is malignant; label 1 is normal/benign.
 
-| 材料 | 用途 |
+| Material | Purpose |
 |---|---|
-| [学生 notebook](student/BreastMNIST_Starter.ipynb) | 实验流程与三个 TODO |
-| [安装运行说明](student/README.md) | 创建环境、依赖与运行步骤 |
-| [简短口试草案](docs/Oral_check_draft.md) | 代码讲解和现场小修改 |
-| [学生材料包](student_starter.zip) | 下载后在本地使用 |
+| [Student notebook](student/BreastMNIST_Starter.ipynb) | Experiment workflow and three TODOs |
+| [Setup and running instructions](student/README.md) | Environment, dependencies and execution |
+| [Verification notes](docs/verification.md) | Scope and limitations of local checks |
+| [Downloadable starter package](student_starter.zip) | Files for local use |
 
-## 学生需要做什么
+## Student work
 
-选择一个具有可用预训练权重的架构，说明模型与权重来源，并适配输入处理。为研究预训练的作用，在**同一架构**内比较预训练与随机初始化，保持输入和可训练层等条件一致，避免将不同架构的差异解释成预训练效果。
+Select an architecture with available pretrained weights, document the model and weight source, and adapt its input processing. Compare pretrained and randomly initialised versions of the **same architecture**, keeping input processing and trainable layers consistent.
 
-三个 TODO 分别是：适配二分类模型、实现一轮训练、输出恶性概率。学生还需选择并解释学习率、增强和训练过程，分析验证结果及错误案例。可以自由探索模型，说明选择理由并报告相关尝试；框架不会替学生完成最终实验分析。
+Complete three TODOs:
 
-理解核查拟采用约五分钟的代码讲解与一处现场小修改：**先预测变化，再修改运行，最后解释结果**。具体形式和评分由教学团队按最终 brief 确认。
+1. Adapt the binary classification model.
+2. Implement one training epoch.
+3. Return malignant-class prediction scores.
 
-## 使用与范围
+Choose and explain learning rates, augmentation and training choices. You may explore models; explain your selection and report relevant trials. Analyse validation results and errors using your own experiments.
 
-先阅读安装说明，完成 notebook 中的环境与数据检查，再补全 TODO 并运行实验。开发和选择设置使用验证数据；最终测试用于评价已确定的实验方案。
+## Getting started
 
-[已完成的短程运行和检查](docs/verification.md)只说明接口与流程能够工作，不能证明某种方法更好。图像放大不会恢复缺失细节，实验结果也不能直接推论临床用途。
+Read the setup instructions, open the notebook, run environment and data checks, complete the TODOs, and enable experiments. First use downloads the dataset and chosen weights into local caches.
 
-公开材料不包含教师答案、训练数据、模型权重或本机环境。数据定义参见 [MedMNIST 官方项目](https://github.com/MedMNIST/MedMNIST)，迁移学习可参考 [PyTorch 官方教程](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)。
+Use validation data during development and evaluate the fixed experiment plan on the final test split. Short runs check the workflow; they do not establish model superiority. Upsampling adds no missing image detail, and results do not establish clinical usefulness.
+
+Sources: [MedMNIST](https://github.com/MedMNIST/MedMNIST) and the [PyTorch transfer-learning tutorial](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html).

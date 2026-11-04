@@ -1,11 +1,10 @@
 # Verification scope
 
-The teaching scaffold was checked with Python 3.13 and CPU PyTorch. See student/requirements.txt for pinned dependencies.
+Checks used Python 3.13 and CPU PyTorch. See [requirements.txt](../student/requirements.txt) for pinned dependencies.
 
-- 12 behavioural checks passed: official data splits, original label direction, metrics, custom transforms, parameter updates and frozen-backbone behaviour.
-- The uncompleted student notebook executes its data checks while training and final testing remain disabled.
-- Internal completed copies exercised two independent architectures with both random and pretrained initialisation: 32 training images, 16 validation images and one epoch per condition.
-- The live threshold-change cell executed using saved validation scores.
-- The student archive was extracted and its default notebook executed independently. It contains four student files and no teacher implementation.
+- 12 recorded behavioural checks covered official splits, label direction, metrics, custom input transforms, parameter updates and frozen-layer behaviour.
+- The current default notebook executed its data checks with all three implementation TODOs unfilled and training and final-test evaluation disabled.
+- Optional threshold analysis executed with fixed synthetic validation scores.
+- The downloadable package contains four files that match the current student source. Notebook outputs remain cleared.
 
-These are integration checks, not evidence of model superiority. Students' chosen architectures and implementations need their own verification. The final notebook/interface checks did not evaluate the test split.
+These checks verify workflow and code behaviour. They do not establish model superiority. Each chosen architecture and completed implementation needs its own verification.
