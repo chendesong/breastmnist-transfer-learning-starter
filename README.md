@@ -1,6 +1,6 @@
 # BreastMNIST Transfer Learning Starter
 
-A draft teaching scaffold for medical image classification and transfer learning. The notebook provides a starting workflow while leaving core implementation and experimental decisions to students. Follow the final assignment brief for tasks, assessment and permitted AI assistance.
+A teaching scaffold for medical image classification and transfer learning. The notebook provides a starting workflow while leaving core implementation and experimental decisions to students. Follow the final assignment brief for tasks, assessment and permitted AI assistance.
 
 **The dataset is fixed; the model and weights are your choice.** BreastMNIST contains 28×28 grayscale breast ultrasound images for binary classification. Keep the official training, validation and test splits: label 0 is malignant; label 1 is normal/benign.
 
