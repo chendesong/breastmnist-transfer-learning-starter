@@ -1,32 +1,51 @@
-# BreastMNIST Transfer Learning Starter
+# BreastMNIST Data Support
 
-A teaching scaffold for medical image classification and transfer learning. The notebook provides a starting workflow while leaving core implementation and experimental decisions to students. Follow the final assignment brief for tasks, assessment and permitted AI assistance.
+Three files for checking access to the official BreastMNIST 28x28 dataset.
+Use any Python editor or IDE. No notebook or GPU is required.
+Follow the final assignment brief for model tasks, assessment and permitted AI use.
 
-**The dataset is fixed; the model and weights are your choice.** BreastMNIST contains 28×28 grayscale breast ultrasound images for binary classification. Keep the official training, validation and test splits: label 0 is malignant; label 1 is normal/benign.
+## Run
 
-| Material | Purpose |
-|---|---|
-| [Student notebook](student/BreastMNIST_Starter.ipynb) | Experiment workflow and three TODOs |
-| [Setup and running instructions](student/README.md) | Environment, dependencies and execution |
-| [Verification notes](docs/verification.md) | Scope and limitations of local checks |
-| [Downloadable starter package](student_starter.zip) | Files for local use |
+Python 3.13 is used for local verification. From this folder:
 
-## Student work
+```powershell
+py -3.13 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe check_data.py
+```
 
-Select an architecture with available pretrained weights, document the model and weight source, and adapt its input processing. Compare pretrained and randomly initialised versions of the **same architecture**, keeping input processing and trainable layers consistent.
+If the dependencies are already installed in your selected Python environment:
 
-Complete three TODOs:
+```text
+python check_data.py
+```
 
-1. Adapt the binary classification model.
-2. Implement one training epoch.
-3. Return malignant-class prediction scores.
+The first run downloads `data/breastmnist.npz` from the official Zenodo record.
+Later runs reuse the cached file and check its MD5 again; they need no download.
+A successful run prints `PASS: all dataset checks completed` and saves
+`data/train_preview.png`, containing eight original training images.
+Checks or downloads that fail return a non-zero exit code. A checksum mismatch
+does not replace the existing archive: inspect or move that file before retrying.
 
-Choose and explain learning rates, augmentation and training choices. You may explore models; explain your selection and report relevant trials. Analyse validation results and errors using your own experiments.
+To use a different cache location:
 
-## Getting started
+```text
+python check_data.py --data-dir "C:/my-data/breastmnist"
+```
 
-Read the setup instructions, open the notebook, run environment and data checks, complete the TODOs, and enable experiments. First use downloads the dataset and chosen weights into local caches.
+## What is checked
 
-Use validation data during development and evaluate the fixed experiment plan on the final test split. Short runs check the workflow; they do not establish model superiority. Upsampling adds no missing image detail, and results do not establish clinical usefulness.
+- The archive matches the publisher's MD5: `750601b1f35ba3300ea97c75c52ff8f6`.
+- Its six arrays have the official shapes and `uint8` types.
+- Training, validation and test contain 546, 78 and 156 images, respectively.
+- Images remain 28x28 grayscale; labels remain `0 = malignant`, `1 = normal/benign`.
+- Class counts and pixel ranges are printed. Only training images are previewed.
 
-Sources: [MedMNIST](https://github.com/MedMNIST/MedMNIST) and the [PyTorch transfer-learning tutorial](https://docs.pytorch.org/tutorials/beginner/transfer_learning_tutorial.html).
+These checks verify the specified archive and its structure. They do not validate
+individual clinical annotations, patient independence or a student's model.
+The script does not re-split, resize, normalise, train or evaluate anything.
+Implement your own model, preprocessing and experiments, and install the libraries
+they need. Reserve the test set for final evaluation.
+
+Sources: [official metadata](https://github.com/MedMNIST/MedMNIST/blob/main/medmnist/info.py),
+[official dataset](https://zenodo.org/records/10519652/files/breastmnist.npz?download=1).
